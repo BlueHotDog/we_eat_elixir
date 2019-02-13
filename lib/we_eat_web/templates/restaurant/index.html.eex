@@ -1,0 +1,30 @@
+<h1>Listing Restaurants</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+      <th>Rating</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for restaurant <- @restaurants do %>
+    <tr>
+      <td><%= restaurant.name %></td>
+      <td><%= restaurant.location %></td>
+      <td><%= restaurant.rating %></td>
+
+      <td>
+        <%= link "Show", to: Routes.restaurant_path(@conn, :show, restaurant) %>
+        <%= link "Edit", to: Routes.restaurant_path(@conn, :edit, restaurant) %>
+        <%= link "Delete", to: Routes.restaurant_path(@conn, :delete, restaurant), method: :delete, data: [confirm: "Are you sure?"] %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Restaurant", to: Routes.restaurant_path(@conn, :new) %></span>

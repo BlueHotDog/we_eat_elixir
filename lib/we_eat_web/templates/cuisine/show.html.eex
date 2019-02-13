@@ -1,0 +1,13 @@
+<h1>Show Cuisine</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @cuisine.name %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.cuisine_path(@conn, :edit, @cuisine) %></span>
+<span><%= link "Back", to: Routes.cuisine_path(@conn, :index) %></span>

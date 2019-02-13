@@ -1,0 +1,26 @@
+<h1>Listing Cuisines</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for cuisine <- @cuisines do %>
+    <tr>
+      <td><%= cuisine.name %></td>
+
+      <td>
+        <%= link "Show", to: Routes.cuisine_path(@conn, :show, cuisine) %>
+        <%= link "Edit", to: Routes.cuisine_path(@conn, :edit, cuisine) %>
+        <%= link "Delete", to: Routes.cuisine_path(@conn, :delete, cuisine), method: :delete, data: [confirm: "Are you sure?"] %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Cuisine", to: Routes.cuisine_path(@conn, :new) %></span>
