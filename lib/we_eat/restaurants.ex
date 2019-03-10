@@ -8,6 +8,17 @@ defmodule WeEat.Restaurants do
 
   alias WeEat.Restaurants.Restaurant
 
+  def add_cuisines(%Restaurant{} = restaurant, cuisines_ids) when is_list(cuisines_ids) do
+    cuisines = WeEat.Cuisines.get_cuisines(cuisines_ids)
+
+    Repo.preload(restaurant, [:cuisines])
+
+    restaurant
+    |> Repo.preload([:cuisines])
+    |> Restaurant.changeset_update_cousines(cuisines)
+    |> Repo.update()
+  end
+
   @doc """
   Returns the list of restaurants.
 

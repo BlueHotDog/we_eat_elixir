@@ -37,6 +37,10 @@ defmodule WeEat.Cuisines do
   """
   def get_cuisine!(id), do: Repo.get!(Cuisine, id)
 
+  def get_cuisines(ids) when is_list(ids) do
+    Cuisine |> where([cuisine], cuisine.id in ^ids) |> Repo.all()
+  end
+
   @doc """
   Creates a cuisine.
 

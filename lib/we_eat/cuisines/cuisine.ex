@@ -6,7 +6,7 @@ defmodule WeEat.Cuisines.Cuisine do
 
   schema "cuisines" do
     field :name, :string
-    many_to_many :restaurants, Restaurant, join_through: "restaurains_cuisines"
+    many_to_many :restaurants, Restaurant, join_through: "restaurants_cuisines"
     timestamps()
   end
 
